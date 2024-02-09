@@ -70,4 +70,3 @@ docker compose --profile backend up --build
 - **What it does**: Starts the container that make your Laravel project run. The `up` run the servie," and `--build` ensures everything is fresh and up to date.  
 
 **Time to shine**
-Open your browser and head to ` http://localhost:8003` If the sun isn't shining there, something might be wrong 🤸
