@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  # laravel:
+  #   build:
+  #     context: ${PROJECT_PATH}
+  #     dockerfile: ${PROJECT_PATH}/Dockerfile
+  #     args:
+  #       MOUNT_PATH: ${PROJECT_PATH}/composer.json
+  #   restart: always
+  #   tty: true
+  #   ports:
+  #     - "8003:8000"
+  #   container_name: ${PROJECT_NAME}
+  #   volumes:
+  #     - /var/www/app/vendor
+  #     - /var/www/app/node_modules
+  #     - ${PROJECT_PATH}:/var/www/app
+  #   profiles:
+  #     - backend
+
+  xbot_postgres:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+        - "8085:5432"
+    container_name: xbot_postgres
+    volumes:
+      - ./docker/postgres/.db:/var/lib/postgresql/data
+    profiles:
+      - postgres
+
+  # mysql:
+  #   image: mysql
+  #   restart: always
+  #   tty: true
+  #   command: --default_authentication_plugin=caching_sha2_password
+  #   environment:
+  #     MYSQL_USER: ${MYSQL_USER}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
+  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #   ports:
+  #     - "8084:3306"
+  #   container_name: mysql
+  #   volumes:
+  #     - ./docker/mysql/.db:/var/lib/mysql
+  #   profiles:
+  #     - mysql
+
+
+
+
+#  nodejs:
+#    image: node:alpine
+#    container_name: nodejs
+#    restart: unless-stopped
+#    env_file: .env
+#    ports:
+#      - "8080:8080"
+#    profiles:
+#      - backend
+#    depends_on:
+#      - laravel
