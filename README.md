@@ -68,5 +68,3 @@ Now it's Laravel service turn to run
 docker compose --profile backend up --build
 ```
 - **What it does**: Starts the container that make your Laravel project run. The `up` run the servie," and `--build` ensures everything is fresh and up to date.  
-
-**Time to shine**
